@@ -135,6 +135,10 @@ nav {
 
 /* ── HERO ── */
 .hero {
+  background-image: url("images/slide-3.webp");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
   background: var(--green);
   position: relative;
   overflow: hidden;
@@ -675,7 +679,7 @@ footer {
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">
-      <span class="nav-logo-name">SSMS</span>
+      <img src="images/logo.png" alt="SSMS" style="height:36px;filter:brightness(0) invert(1);">
       <span class="nav-logo-sub">Est. 2012 · CBSE</span>
     </div>
     <ul class="nav-links">
@@ -727,6 +731,16 @@ footer {
     </div>
   </div>
 </section>
+
+<!-- CAMPUS PHOTO STRIP -->
+<div style="height:320px;overflow:hidden;position:relative;">
+  <img src="images/campus-hero.jpg" alt="SSMS Campus" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+  <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(15,23,42,0.5) 0%, transparent 60%);"></div>
+  <div style="position:absolute;bottom:24px;left:40px;color:#fff;">
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:0.7;margin-bottom:4px;">Our Campus</div>
+    <div style="font-family:Cormorant Garamond,serif;font-size:22px;font-weight:600;">Mappedu Road, New Perungalathur, Chennai</div>
+  </div>
+</div>
 
 <!-- STATS -->
 <div class="stats-strip">
@@ -811,6 +825,14 @@ footer {
   </div>
 </section>
 
+<!-- PHOTO GALLERY STRIP -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-height:200px;overflow:hidden;">
+  <img src="images/annual-day-1.jpg" alt="Annual Day" style="width:100%;height:200px;object-fit:cover;">
+  <img src="images/grandparents-1.jpg" alt="Grandparents Day" style="width:100%;height:200px;object-fit:cover;">
+  <img src="images/sports-and-games-2.jpg" alt="Sports Day" style="width:100%;height:200px;object-fit:cover;">
+  <img src="images/annual-day-4.jpg" alt="School Event" style="width:100%;height:200px;object-fit:cover;">
+</div>
+
 <!-- FACILITIES -->
 <section class="section" id="facilities">
   <div class="section-inner">
@@ -819,42 +841,42 @@ footer {
     <p class="section-sub">28,894 sq.m campus with 15 purpose-built facilities. Everything your child needs, under one roof.</p>
     <div class="facilities-grid">
       <div class="facility-card">
-        <div class="facility-img">🔬</div>
+        <div class="facility-img" style="padding:0;overflow:hidden;"><img src="images/science-lab-1-1.jpg" alt="Science Lab" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="facility-body">
           <div class="facility-name">Science Laboratories</div>
           <div class="facility-desc">Fully equipped Physics, Chemistry and Biology labs for hands-on learning from Class 6 onwards.</div>
         </div>
       </div>
       <div class="facility-card">
-        <div class="facility-img">💻</div>
+        <div class="facility-img" style="padding:0;overflow:hidden;"><img src="images/computer-center-1.jpg" alt="Computer Lab" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="facility-body">
           <div class="facility-name">Computer Education</div>
           <div class="facility-desc">Internet-enabled computer lab with modern hardware. Digital literacy from Montessori level.</div>
         </div>
       </div>
       <div class="facility-card">
-        <div class="facility-img">📚</div>
+        <div class="facility-img" style="padding:0;overflow:hidden;"><img src="images/slide-11.webp" alt="Library" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="facility-body">
           <div class="facility-name">Library</div>
           <div class="facility-desc">Curated collection across subjects and age groups. Structured reading programmes for all classes.</div>
         </div>
       </div>
       <div class="facility-card">
-        <div class="facility-img">🎨</div>
+        <div class="facility-img" style="padding:0;overflow:hidden;"><img src="images/annual-day-2.jpg" alt="Fine Arts" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="facility-body">
           <div class="facility-name">Fine Arts & Theatre</div>
           <div class="facility-desc">Music, dance, drama and visual arts. Annual Day performances showcase every child's talent.</div>
         </div>
       </div>
       <div class="facility-card">
-        <div class="facility-img">🚌</div>
+        <div class="facility-img" style="padding:0;overflow:hidden;"><img src="images/slide-9.webp" alt="Transport" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="facility-body">
           <div class="facility-name">School Transport</div>
           <div class="facility-desc">GPS-tracked buses covering multiple routes across Chennai. Safe, punctual, reliable.</div>
         </div>
       </div>
       <div class="facility-card">
-        <div class="facility-img">🏃</div>
+        <div class="facility-img" style="padding:0;overflow:hidden;"><img src="images/sports-and-games-1.jpg" alt="Sports" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="facility-body">
           <div class="facility-name">Sports, Yoga & Play</div>
           <div class="facility-desc">Physical education, play park, yoga and Scouts & Guides. Healthy body, healthy mind.</div>
@@ -934,7 +956,7 @@ footer {
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand-name">Srimathi Sundaravalli Memorial School</div>
+        <div class="footer-brand-name"><img src="images/logo.png" alt="SSMS" style="height:28px;filter:brightness(0) invert(1);opacity:0.8;margin-bottom:8px;display:block;"><span style="font-family:Cormorant Garamond,serif;font-size:16px;color:#fff;">Srimathi Sundaravalli Memorial School</span></div>
         <p class="footer-brand-desc">A CBSE-affiliated school committed to merit, character, and holistic development. Part of the SSM Educational Trust, serving Chennai since 1985.</p>
         <div class="footer-contact-item">📍 Mappedu Road, Alapakkam, New Perungalathur, Chennai – 600 063</div>
         <div class="footer-contact-item">📞 044-45094270, 45094235</div>
