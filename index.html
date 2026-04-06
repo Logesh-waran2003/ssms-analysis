@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSMS — Srimathi Sundaravalli Memorial School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #1A3C34;
+  --green-mid: #2D5A4E;
+  --green-light: #3D7A6A;
+  --gold: #B8860B;
+  --gold-light: #D4A017;
+  --cream: #FAF8F3;
+  --cream-dark: #F0EBE0;
+  --ink: #1C1C1C;
+  --ink-mid: #3D3D3D;
+  --ink-light: #6B6B6B;
+  --white: #FFFFFF;
+  --border: #E2DDD4;
+  --red-alert: #C0392B;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── ANNOUNCEMENT BAR ── */
+.announcement {
+  background: var(--red-alert);
+  color: #fff;
+  text-align: center;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.announcement a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-left: 12px;
+  font-weight: 600;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--green);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.nav-logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+.nav-logo-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #fff; }
+.nav-actions { display: flex; gap: 10px; align-items: center; }
+.btn-wa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #25D366;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.btn-wa:hover { opacity: 0.9; }
+.btn-apply {
+  background: var(--gold);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  transition: background 0.2s;
+}
+.btn-apply:hover { background: var(--gold-light); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--green);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 32px 72px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+.hero-eyebrow span { color: var(--gold-light); }
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+.hero-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--gold);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 13px 24px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+
+/* hero card */
+.hero-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 28px;
+  backdrop-filter: blur(8px);
+}
+.hero-card-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 16px;
+}
+.trust-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.trust-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.4;
+}
+.trust-list li::before {
+  content: '✓';
+  color: #4ADE80;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.hero-card-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin: 20px 0;
+}
+.hero-card-contact {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+}
+.hero-card-contact strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+
+
+/* ── STATS STRIP ── */
+.stats-strip {
+  background: var(--ink);
+  padding: 28px 32px;
+}
+.stats-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.stat-item {
+  text-align: center;
+  padding: 0 24px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── TRUST BADGES ── */
+.trust-strip {
+  background: #EEF7F0;
+  border-top: 1px solid #C8E6D0;
+  border-bottom: 1px solid #C8E6D0;
+  padding: 14px 32px;
+}
+.trust-strip-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1A5C2A;
+}
+.trust-badge svg { flex-shrink: 0; }
+
+/* ── SECTION WRAPPER ── */
+.section { padding: 80px 32px; }
+.section-inner { max-width: 1160px; margin: 0 auto; }
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green-light);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+}
+.section-sub {
+  font-size: 15px;
+  color: var(--ink-light);
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-bg { background: var(--cream-dark); }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+.testimonial-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  position: relative;
+}
+.testimonial-card::before {
+  content: '\201C';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  color: var(--green);
+  opacity: 0.12;
+  position: absolute;
+  top: 8px;
+  left: 18px;
+  line-height: 1;
+}
+.stars { color: #F59E0B; font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; }
+.testimonial-text {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.75;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+.testimonial-author { font-size: 13px; font-weight: 600; color: var(--ink); }
+.testimonial-meta { font-size: 11.5px; color: var(--ink-light); margin-top: 2px; }
+
+/* ── FACILITIES ── */
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+.facility-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.facility-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.facility-img {
+  height: 120px;
+  background: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  border-bottom: 1px solid var(--border);
+}
+.facility-body { padding: 16px; }
+.facility-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.facility-desc { font-size: 12.5px; color: var(--ink-light); line-height: 1.5; }
+
+/* ── ADMISSION STEPS ── */
+.admission-bg { background: var(--green); }
+.admission-bg .section-label { color: var(--gold-light); }
+.admission-bg .section-title { color: #fff; }
+.admission-bg .section-sub { color: rgba(255,255,255,0.6); }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 48px;
+  position: relative;
+}
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: calc(12.5% + 20px);
+  right: calc(12.5% + 20px);
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.step {
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+}
+.step-num {
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 auto 16px;
+  position: relative;
+  z-index: 1;
+}
+.step-num.done { background: #22C55E; }
+.step-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.step-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+.step-note {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--gold-light);
+  font-style: italic;
+}
+.admission-cta {
+  margin-top: 48px;
+  text-align: center;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── FINAL CTA ── */
+.final-cta {
+  background: var(--cream-dark);
+  border-top: 1px solid var(--border);
+  padding: 72px 32px;
+  text-align: center;
+}
+.final-cta-inner { max-width: 640px; margin: 0 auto; }
+.final-cta-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red-alert);
+  margin-bottom: 12px;
+}
+.final-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.final-cta p {
+  font-size: 15px;
+  color: var(--ink-light);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.final-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-dark {
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-dark:hover { background: var(--ink-mid); }
+.btn-green {
+  background: #25D366;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: opacity 0.2s;
+}
+.btn-green:hover { opacity: 0.9; }
+.btn-call {
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 13px 24px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+.btn-call:hover { border-color: var(--ink-mid); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 48px 32px 24px;
+}
+.footer-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.footer-brand-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.footer-contact-item {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+}
+.footer-col-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 16px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #fff; }
+.footer-bottom {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+}
+.footer-affiliation {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.5px;
+}
+
+/* ── WHATSAPP FAB ── */
+.wa-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: #25D366;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 18px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  text-decoration: none;
+  z-index: 200;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.wa-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.5);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 16px 0; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .facilities-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .steps-grid::before { display: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+@media (max-width: 560px) {
+  .section { padding: 56px 20px; }
+  .facilities-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .trust-strip-inner { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement">
+  🔴 Admissions 2026–27 are open — limited seats remaining. Merit-based. No donation fee.
+  <a href="#admissions">Check availability →</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="nav-logo-name">SSMS</span>
+      <span class="nav-logo-sub">Est. 2012 · CBSE</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#facilities">Campus</a></li>
+      <li><a href="#admissions">Admissions</a></li>
+      <li><a href="#parents">Parents</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/914445094270" class="btn-wa" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="#admissions" class="btn-apply">Apply 2026–27</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">CBSE Affiliated · <span>Affiliation No. 1930487</span> · New Perungalathur, Chennai</div>
+      <h1>Give Your Child<br>the Education<br><em>They Deserve</em></h1>
+      <p class="hero-sub">Srimathi Sundaravalli Memorial School — where every child is known by name, not just a roll number. Merit-based admissions. No capitation fee. Real results since 2012.</p>
+      <div class="hero-btns">
+        <a href="#admissions" class="btn-primary">Apply for Admission →</a>
+        <a href="#contact" class="btn-outline">Book a School Visit</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Why parents choose SSMS</div>
+      <ul class="trust-list">
+        <li>CBSE affiliated — nationally recognised curriculum</li>
+        <li>No donation or capitation fee — ever</li>
+        <li>Merit-based admissions, fully transparent process</li>
+        <li>28,894 sq.m campus with 15 facilities</li>
+        <li>GPS-tracked school transport, multiple routes</li>
+        <li>Parent portal for real-time updates</li>
+        <li>Special educator &amp; counsellor on staff</li>
+      </ul>
+      <div class="hero-card-divider"></div>
+      <div class="hero-card-contact">
+        <strong>📞 044-45094270, 45094235</strong><br>
+        adminssms.perungalathur@ssmetrust.in<br>
+        Mappedu Road, Alapakkam, New Perungalathur
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">1,200+</div>
+      <div class="stat-label">Students Enrolled</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">98%</div>
+      <div class="stat-label">Board Pass Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">13+</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">80+</div>
+      <div class="stat-label">Qualified Teachers</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BADGES -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-badge">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1A5C2A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      CBSE Affiliated (No. 1930487)
+    </div>
+    <div class="trust-badge">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1A5C2A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      No Donation / Capitation Fee
+    </div>
+    <div class="trust-badge">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1A5C2A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Merit-Based Admissions Only
+    </div>
+    <div class="trust-badge">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1A5C2A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Recognised by Govt. of Tamil Nadu
+    </div>
+    <div class="trust-badge">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1A5C2A" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      SSM Educational Trust Since 1985
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-bg" id="about">
+  <div class="section-inner">
+    <div class="section-label">Parent Stories</div>
+    <h2 class="section-title">What Families Say About SSMS</h2>
+    <p class="section-sub">Real feedback from parents who chose us. We let their words speak for the school.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The teachers here know my son by name and actually track his progress individually. That kind of personal attention is genuinely rare in Chennai schools today."</p>
+        <div class="testimonial-author">Priya Ramesh</div>
+        <div class="testimonial-meta">Parent · Class 6 · 3 years at SSMS</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"No donation fee, no pressure, no middlemen. The admission process was completely transparent. My daughter got in purely on merit — exactly as they promised."</p>
+        <div class="testimonial-author">Karthik Subramaniam</div>
+        <div class="testimonial-meta">Parent · Class 3 · 1 year at SSMS</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The transport is reliable and the school communicates proactively through the parent portal. I always know what's happening — no surprises, no anxiety."</p>
+        <div class="testimonial-author">Meena Krishnan</div>
+        <div class="testimonial-meta">Parent · Class 8 · 4 years at SSMS</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"My child went from being shy to performing on stage at Annual Day. The fine arts and activity programmes here genuinely develop the whole child, not just academics."</p>
+        <div class="testimonial-author">Anand Venkatesh</div>
+        <div class="testimonial-meta">Parent · Class 5 · 2 years at SSMS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="section" id="facilities">
+  <div class="section-inner">
+    <div class="section-label">Campus Life</div>
+    <h2 class="section-title">Built for Learning,<br>Designed for Growth</h2>
+    <p class="section-sub">28,894 sq.m campus with 15 purpose-built facilities. Everything your child needs, under one roof.</p>
+    <div class="facilities-grid">
+      <div class="facility-card">
+        <div class="facility-img">🔬</div>
+        <div class="facility-body">
+          <div class="facility-name">Science Laboratories</div>
+          <div class="facility-desc">Fully equipped Physics, Chemistry and Biology labs for hands-on learning from Class 6 onwards.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <div class="facility-img">💻</div>
+        <div class="facility-body">
+          <div class="facility-name">Computer Education</div>
+          <div class="facility-desc">Internet-enabled computer lab with modern hardware. Digital literacy from Montessori level.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <div class="facility-img">📚</div>
+        <div class="facility-body">
+          <div class="facility-name">Library</div>
+          <div class="facility-desc">Curated collection across subjects and age groups. Structured reading programmes for all classes.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <div class="facility-img">🎨</div>
+        <div class="facility-body">
+          <div class="facility-name">Fine Arts & Theatre</div>
+          <div class="facility-desc">Music, dance, drama and visual arts. Annual Day performances showcase every child's talent.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <div class="facility-img">🚌</div>
+        <div class="facility-body">
+          <div class="facility-name">School Transport</div>
+          <div class="facility-desc">GPS-tracked buses covering multiple routes across Chennai. Safe, punctual, reliable.</div>
+        </div>
+      </div>
+      <div class="facility-card">
+        <div class="facility-img">🏃</div>
+        <div class="facility-body">
+          <div class="facility-name">Sports, Yoga & Play</div>
+          <div class="facility-desc">Physical education, play park, yoga and Scouts & Guides. Healthy body, healthy mind.</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--green);text-decoration:none;border-bottom:2px solid var(--green);padding-bottom:2px;">
+        Book a campus visit to see it in person →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSION STEPS -->
+<section class="section admission-bg" id="admissions">
+  <div class="section-inner">
+    <div class="section-label">Admissions 2026–27</div>
+    <h2 class="section-title">Simple. Transparent. Merit-Based.</h2>
+    <p class="section-sub">Four steps. No agents. No donations. Just your child's ability.</p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Fill the Online Form</div>
+        <div class="step-desc">Basic details only. Takes under 10 minutes. No documents needed at this stage.</div>
+        <span class="step-note">Start anytime →</span>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Entrance Assessment</div>
+        <div class="step-desc">Age-appropriate test. Syllabus available to download. No coaching required.</div>
+        <span class="step-note">Download syllabus →</span>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Results Published</div>
+        <div class="step-desc">Merit list published online. Check your result using your application number.</div>
+        <span class="step-note">Fully transparent</span>
+      </div>
+      <div class="step">
+        <div class="step-num done">✓</div>
+        <div class="step-title">Confirm Your Seat</div>
+        <div class="step-desc">Submit documents and pay fees. Your child's place is confirmed.</div>
+        <span class="step-note">No hidden charges</span>
+      </div>
+    </div>
+    <div class="admission-cta">
+      <a href="#" class="btn-primary" style="font-size:15px;padding:14px 28px;">Apply Online Now →</a>
+      <a href="#" class="btn-outline" style="font-size:14px;padding:14px 22px;">📥 Download Fee Chart</a>
+      <a href="#" class="btn-outline" style="font-size:14px;padding:14px 22px;">📋 Download Syllabus</a>
+    </div>
+    <div style="margin-top:20px;text-align:center;font-size:12px;color:rgba(255,255,255,0.35);">
+      Questions? Call 044-45094270 or WhatsApp us — we respond within 2 hours on school days.
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="contact">
+  <div class="final-cta-inner">
+    <div class="final-cta-eyebrow">⚠ Limited Seats · Admissions Close Soon</div>
+    <h2>Ready to Give Your Child the Best Start?</h2>
+    <p>Join 1,200+ families who chose SSMS. Merit-based admissions, no donation fee, and a school that genuinely cares about every child.</p>
+    <div class="final-cta-btns">
+      <a href="#" class="btn-dark">Apply Online →</a>
+      <a href="https://wa.me/914445094270" class="btn-green" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="tel:04445094270" class="btn-call">📞 044-45094270</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="parents">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Srimathi Sundaravalli Memorial School</div>
+        <p class="footer-brand-desc">A CBSE-affiliated school committed to merit, character, and holistic development. Part of the SSM Educational Trust, serving Chennai since 1985.</p>
+        <div class="footer-contact-item">📍 Mappedu Road, Alapakkam, New Perungalathur, Chennai – 600 063</div>
+        <div class="footer-contact-item">📞 044-45094270, 45094235</div>
+        <div class="footer-contact-item">✉️ adminssms.perungalathur@ssmetrust.in</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Admissions</div>
+        <ul class="footer-links">
+          <li><a href="#">Apply Online</a></li>
+          <li><a href="#">Fee Structure</a></li>
+          <li><a href="#">Age Criteria</a></li>
+          <li><a href="#">Entrance Syllabus</a></li>
+          <li><a href="#">Check Result</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">School</div>
+        <ul class="footer-links">
+          <li><a href="#">About SSMS</a></li>
+          <li><a href="#">Faculty</a></li>
+          <li><a href="#">Facilities</a></li>
+          <li><a href="#">Transport Routes</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Parents</div>
+        <ul class="footer-links">
+          <li><a href="#">Parent Portal</a></li>
+          <li><a href="#">Alumni Portal</a></li>
+          <li><a href="#">Latest Circulars</a></li>
+          <li><a href="#">Annual Report</a></li>
+          <li><a href="#">Mandatory Disclosure</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Srimathi Sundaravalli Memorial School. All rights reserved.</span>
+      <span class="footer-affiliation">CBSE Affiliation No. 1930487 · School Code 55387</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/914445094270" class="wa-fab" target="_blank">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  Chat with us
+</a>
+
+</body>
+</html>
