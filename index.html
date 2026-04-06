@@ -954,6 +954,7 @@ footer {
   .about-img-wrap { height: 260px; }
   .results-grid { grid-template-columns: 1fr; gap: 12px; }
   #map .section-inner > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+  #why .section-inner > div:last-child { grid-template-columns: repeat(2,1fr) !important; }
 }
 @media (max-width: 560px) {
   .section { padding: 56px 20px; }
@@ -962,6 +963,10 @@ footer {
   .footer-grid { grid-template-columns: 1fr; }
   .trust-strip-inner { gap: 16px; }
   .result-toppers { gap: 16px; }
+  .sticky-bar { padding: 10px 16px; flex-wrap: wrap; gap: 10px; }
+  .sticky-bar-text { font-size: 12px; width: 100%; }
+  .sticky-bar-actions { width: 100%; justify-content: flex-end; }
+  .wa-fab { bottom: 80px; }
 }
 </style>
 </head>
@@ -1147,6 +1152,47 @@ footer {
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SSMS -->
+<section class="section" style="background:var(--cream);" id="why">
+  <div class="section-inner">
+    <div class="section-label fade-up">Why Choose SSMS</div>
+    <h2 class="section-title fade-up fade-up-delay-1">What Makes Us Different<br>from Other Schools</h2>
+    <p class="section-sub fade-up fade-up-delay-2">Parents in Chennai have many options. Here's what sets SSMS apart — in plain language.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;" class="fade-up fade-up-delay-2">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;">
+        <div style="font-size:28px;margin-bottom:12px;">🚫</div>
+        <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;">Zero Donation Fee</h4>
+        <p style="font-size:13px;color:var(--ink-light);line-height:1.7;">Many Chennai schools charge ₹50,000–₹2L as "donation". SSMS charges nothing beyond published fees. Ever.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;">
+        <div style="font-size:28px;margin-bottom:12px;">📋</div>
+        <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;">Transparent Admissions</h4>
+        <p style="font-size:13px;color:var(--ink-light);line-height:1.7;">Merit list published online. No agents, no back-door entries. Your child gets in on ability — nothing else.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;">
+        <div style="font-size:28px;margin-bottom:12px;">👤</div>
+        <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;">Every Child is Known</h4>
+        <p style="font-size:13px;color:var(--ink-light);line-height:1.7;">With 1,200 students and 80+ teachers, class sizes stay manageable. Teachers know your child by name, not roll number.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;">
+        <div style="font-size:28px;margin-bottom:12px;">🏫</div>
+        <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;">Real Campus, Real Facilities</h4>
+        <p style="font-size:13px;color:var(--ink-light);line-height:1.7;">28,894 sq.m campus with 15 facilities — not a rented building. Science labs, computer centre, library, sports ground, all on-site.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;">
+        <div style="font-size:28px;margin-bottom:12px;">🎭</div>
+        <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;">Beyond Academics</h4>
+        <p style="font-size:13px;color:var(--ink-light);line-height:1.7;">Fine arts, yoga, Scouts & Guides, sports, Annual Day. We develop the whole child — not just a board exam score.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;padding:24px;">
+        <div style="font-size:28px;margin-bottom:12px;">🤝</div>
+        <h4 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;">Support for Every Child</h4>
+        <p style="font-size:13px;color:var(--ink-light);line-height:1.7;">Special educator and counsellor on staff. Children who need extra support get it — proactively, not as an afterthought.</p>
       </div>
     </div>
   </div>
