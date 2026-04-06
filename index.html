@@ -766,6 +766,120 @@ footer {
 }
 .faq-item.open .faq-a { max-height: 200px; padding: 0 20px 18px; }
 
+/* ── GALLERY STRIP ── */
+.gallery-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  height: 220px;
+  overflow: hidden;
+}
+.gallery-strip img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.gallery-strip img:hover { transform: scale(1.04); }
+
+/* ── ENQUIRY FORM ── */
+.enquiry-bg { background: var(--green); }
+.enquiry-bg .section-label { color: var(--gold-light); }
+.enquiry-bg .section-title { color: #fff; }
+.enquiry-bg .section-sub { color: rgba(255,255,255,0.6); }
+.enquiry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 40px;
+  align-items: start;
+}
+.enquiry-form {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 28px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold-light); }
+.form-group select option { background: var(--green); color: #fff; }
+.form-submit {
+  width: 100%;
+  background: var(--gold);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 4px;
+}
+.form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+.form-note {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+.enquiry-points { display: flex; flex-direction: column; gap: 20px; }
+.enquiry-point {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.enquiry-point-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+}
+.enquiry-point-text h4 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+.enquiry-point-text p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 32px 20px;
+}
+.form-success-icon { font-size: 48px; margin-bottom: 12px; }
+.form-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #fff; margin-bottom: 8px; }
+.form-success p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
 /* ── STICKY APPLY BAR ── */
 .sticky-bar {
   position: fixed;
@@ -1234,11 +1348,11 @@ footer {
 </section>
 
 <!-- PHOTO GALLERY STRIP -->
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;height:220px;overflow:hidden;">
-  <img loading="lazy" src="images/annual-day-1.jpg" alt="Annual Day" style="width:100%;height:220px;object-fit:cover;display:block;">
-  <img loading="lazy" src="images/grandparents-1.jpg" alt="Grandparents Day" style="width:100%;height:220px;object-fit:cover;display:block;">
-  <img loading="lazy" src="images/sports-and-games-2.jpg" alt="Sports Day" style="width:100%;height:220px;object-fit:cover;display:block;">
-  <img loading="lazy" src="images/annual-day-4.jpg" alt="School Event" style="width:100%;height:220px;object-fit:cover;display:block;">
+<div class="gallery-strip">
+  <img loading="lazy" src="images/annual-day-1.jpg" alt="Annual Day">
+  <img loading="lazy" src="images/grandparents-1.jpg" alt="Grandparents Day">
+  <img loading="lazy" src="images/sports-and-games-2.jpg" alt="Sports Day">
+  <img loading="lazy" src="images/annual-day-4.jpg" alt="School Event">
 </div>
 
 <!-- FACILITIES -->
@@ -1380,6 +1494,97 @@ footer {
           <div class="topper-item">
             <div class="topper-score">96.8%</div>
             <div><div class="topper-name">Preethi S.</div><div class="topper-class">Class 10</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENQUIRY FORM -->
+<section class="section enquiry-bg" id="enquire">
+  <div class="section-inner">
+    <div class="section-label fade-up">Get in Touch</div>
+    <h2 class="section-title fade-up fade-up-delay-1">Interested? Let's Talk.</h2>
+    <p class="section-sub fade-up fade-up-delay-2">Fill this in and we'll call you back within one school day. No spam, no pressure.</p>
+    <div class="enquiry-grid">
+      <div class="enquiry-form fade-up fade-up-delay-1">
+        <div id="enquiryFormWrap">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="parentName">Parent Name</label>
+              <input type="text" id="parentName" placeholder="Your name" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp</label>
+              <input type="tel" id="phone" placeholder="9XXXXXXXXX" autocomplete="tel">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="childName">Child's Name</label>
+              <input type="text" id="childName" placeholder="Child's name">
+            </div>
+            <div class="form-group">
+              <label for="applyClass">Applying for Class</label>
+              <select id="applyClass">
+                <option value="">Select class</option>
+                <option>Montessori (LKG)</option>
+                <option>UKG</option>
+                <option>Class 1</option>
+                <option>Class 2</option>
+                <option>Class 3</option>
+                <option>Class 4</option>
+                <option>Class 5</option>
+                <option>Class 6</option>
+                <option>Class 7</option>
+                <option>Class 8</option>
+                <option>Class 9</option>
+                <option>Class 11</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Any questions? (optional)</label>
+            <textarea id="message" rows="3" placeholder="e.g. transport routes, fee structure, admission dates..."></textarea>
+          </div>
+          <button class="form-submit" onclick="submitEnquiry()">Send Enquiry →</button>
+          <p class="form-note">We respond within 1 school day. Your details are never shared with third parties.</p>
+        </div>
+        <div class="form-success" id="formSuccess">
+          <div class="form-success-icon">✅</div>
+          <h3>Enquiry Received!</h3>
+          <p>Thank you. Our admissions team will call you back within one school day.<br>You can also reach us directly on WhatsApp.</p>
+          <a href="https://wa.me/914445094270" class="btn-primary" style="display:inline-block;margin-top:16px;" target="_blank">Open WhatsApp →</a>
+        </div>
+      </div>
+      <div class="enquiry-points fade-up fade-up-delay-2">
+        <div class="enquiry-point">
+          <div class="enquiry-point-icon">📞</div>
+          <div class="enquiry-point-text">
+            <h4>We Call You Back</h4>
+            <p>Submit the form and our admissions team will call within one school day — no chasing required.</p>
+          </div>
+        </div>
+        <div class="enquiry-point">
+          <div class="enquiry-point-icon">🏫</div>
+          <div class="enquiry-point-text">
+            <h4>Book a Campus Visit</h4>
+            <p>See the school before you decide. We welcome parents to walk through the campus, meet teachers, and ask questions.</p>
+          </div>
+        </div>
+        <div class="enquiry-point">
+          <div class="enquiry-point-icon">📋</div>
+          <div class="enquiry-point-text">
+            <h4>Get the Fee Chart</h4>
+            <p>We'll send you the complete fee structure — no hidden charges, no surprises. Everything in writing.</p>
+          </div>
+        </div>
+        <div class="enquiry-point">
+          <div class="enquiry-point-icon">⚡</div>
+          <div class="enquiry-point-text">
+            <h4>Seats Fill Fast</h4>
+            <p>Admissions are merit-based and seats are limited. Early enquiries get priority scheduling for the entrance assessment.</p>
           </div>
         </div>
       </div>
@@ -1667,6 +1872,20 @@ document.querySelectorAll('.stat-item, .testimonial-card, .facility-card, .step,
   if (i % 4 === 2) el.classList.add('fade-up-delay-2');
   if (i % 4 === 3) el.classList.add('fade-up-delay-3');
   observer.observe(el);
+});
+
+// Enquiry form
+function submitEnquiry() {
+  const name = document.getElementById('parentName').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  if (!name || !phone) {
+    alert('Please enter your name and phone number.');
+    return;
+  }
+  document.getElementById('enquiryFormWrap').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
 // Sticky bar
 const stickyBar = document.getElementById('stickyBar');
 const stickyDismiss = document.getElementById('stickyDismiss');
