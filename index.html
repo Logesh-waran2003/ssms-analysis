@@ -88,14 +88,16 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 1px;
+  max-width: 200px;
 }
 .nav-logo-name {
   font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   color: #fff;
-  letter-spacing: 0.5px;
-  line-height: 1.2;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+  white-space: normal;
 }
 .nav-logo-sub {
   font-size: 9px;
@@ -2055,13 +2057,24 @@ document.querySelectorAll('.stat-item, .testimonial-card, .facility-card, .step,
 function revealInViewport() {
   document.querySelectorAll('.fade-up:not(.visible)').forEach(el => {
     const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
+    if (rect.top < window.innerHeight + 60 && rect.bottom > 0) {
       el.classList.add('visible');
     }
   });
 }
-revealInViewport();
-window.addEventListener('hashchange', () => setTimeout(revealInViewport, 50));
+
+// Run after dynamic classes are applied
+setTimeout(revealInViewport, 50);
+
+// Run on hash change (anchor nav)
+window.addEventListener('hashchange', () => setTimeout(revealInViewport, 80));
+
+// Run on scroll as fallback (throttled)
+let _rvTimer;
+window.addEventListener('scroll', () => {
+  clearTimeout(_rvTimer);
+  _rvTimer = setTimeout(revealInViewport, 80);
+}, { passive: true });
 
 // Enquiry form
 function submitEnquiry() {
