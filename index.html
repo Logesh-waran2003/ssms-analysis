@@ -966,6 +966,14 @@ footer {
   .sticky-bar { transition: none; }
 }
 
+/* ── CAMPUS PHOTO STRIP ── */
+.campus-strip { height: 320px; overflow: hidden; position: relative; }
+.campus-strip img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.campus-strip-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,23,42,0.5) 0%, transparent 60%); }
+.campus-strip-label { position: absolute; bottom: 24px; left: 40px; color: #fff; }
+.campus-strip-label-eyebrow { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; margin-bottom: 4px; }
+.campus-strip-label-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; }
+
 /* ── MAP SECTION ── */
 .map-grid {
   display: grid;
@@ -1306,12 +1314,12 @@ footer {
 </section>
 
 <!-- CAMPUS PHOTO STRIP -->
-<div style="height:320px;overflow:hidden;position:relative;">
-  <img src="images/campus-hero.jpg" alt="SSMS Campus" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
-  <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(15,23,42,0.5) 0%, transparent 60%);"></div>
-  <div style="position:absolute;bottom:24px;left:40px;color:#fff;">
-    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:0.7;margin-bottom:4px;">Our Campus</div>
-    <div style="font-family:Cormorant Garamond,serif;font-size:22px;font-weight:600;">Mappedu Road, New Perungalathur, Chennai</div>
+<div class="campus-strip">
+  <img src="images/campus-hero.jpg" alt="SSMS Campus">
+  <div class="campus-strip-overlay"></div>
+  <div class="campus-strip-label">
+    <div class="campus-strip-label-eyebrow">Our Campus</div>
+    <div class="campus-strip-label-text">Mappedu Road, New Perungalathur, Chennai</div>
   </div>
 </div>
 
