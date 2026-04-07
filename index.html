@@ -1978,7 +1978,7 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(el.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.08, rootMargin: '0px 0px 60px 0px' });
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
@@ -1990,6 +1990,18 @@ document.querySelectorAll('.stat-item, .testimonial-card, .facility-card, .step,
   if (i % 4 === 3) el.classList.add('fade-up-delay-3');
   observer.observe(el);
 });
+
+// Immediately reveal any .fade-up elements already in viewport (handles anchor nav jumps)
+function revealInViewport() {
+  document.querySelectorAll('.fade-up:not(.visible)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('visible');
+    }
+  });
+}
+revealInViewport();
+window.addEventListener('hashchange', () => setTimeout(revealInViewport, 50));
 
 // Enquiry form
 function submitEnquiry() {
