@@ -1,1 +1,13 @@
 .vercel
+node_modules
+.next
+out
+.agents/
+.claude/
+.continue/
+.crush/
+.kiro/
+.qwen/
+skills/
+skills-lock.json
+screenshot*.png
