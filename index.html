@@ -80,22 +80,32 @@ nav {
 }
 .nav-logo {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+.nav-logo-text {
+  display: flex;
   flex-direction: column;
   gap: 1px;
+  max-width: 200px;
 }
 .nav-logo-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
   color: #fff;
   letter-spacing: 0.3px;
-  line-height: 1;
+  line-height: 1.3;
+  white-space: normal;
 }
 .nav-logo-sub {
-  font-size: 10px;
+  font-size: 9px;
   color: rgba(255,255,255,0.5);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-style: italic;
 }
 .nav-links {
   display: flex;
@@ -429,6 +439,20 @@ section[id] { scroll-margin-top: 64px; }
 .facility-body { padding: 16px; }
 .facility-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
 .facility-desc { font-size: 12.5px; color: var(--ink-light); line-height: 1.5; }
+.facilities-cta { text-align: center; margin-top: 32px; }
+.facilities-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green);
+  text-decoration: none;
+  border-bottom: 2px solid var(--green);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+.facilities-cta-link:hover { opacity: 0.75; }
 
 /* ── ADMISSION STEPS ── */
 .admission-bg { background: var(--green); }
@@ -488,6 +512,15 @@ section[id] { scroll-margin-top: 64px; }
   gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
+}
+.btn-sm { font-size: 13px; padding: 9px 16px; }
+.section-bg-cream { background: var(--cream); }
+.section-bg-cream-dark { background: var(--cream-dark); padding: 64px 32px; }
+.admission-note {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
 }
 
 /* ── FINAL CTA ── */
@@ -647,7 +680,7 @@ footer {
   box-shadow: 0 4px 20px rgba(37,211,102,0.4);
   text-decoration: none;
   z-index: 200;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, bottom 0.35s ease;
 }
 .wa-fab:hover {
   transform: translateY(-2px);
@@ -700,6 +733,9 @@ footer {
   flex-wrap: wrap;
   align-items: center;
 }
+.map-title { margin-bottom: 20px; }
+.map-desc { margin-bottom: 24px; }
+.topper-list { display: flex; gap: 24px; flex-wrap: wrap; }
 .result-topper-label {
   font-size: 11px;
   font-weight: 600;
@@ -773,6 +809,8 @@ footer {
   padding: 0 20px;
 }
 .faq-item.open .faq-a { max-height: 200px; padding: 0 20px 18px; }
+.faq-footer { margin-top: 28px; text-align: center; font-size: 14px; color: var(--ink-light); }
+.faq-footer-link { color: var(--green); font-weight: 600; text-decoration: none; margin-left: 4px; }
 
 /* ── GALLERY STRIP ── */
 .gallery-strip {
@@ -924,11 +962,15 @@ footer {
   z-index: 200;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s, bottom 0.35s ease;
   box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 .back-top.visible { opacity: 1; transform: translateY(0); }
 .back-top:hover { background: var(--ink-mid); color: #fff; }
+
+/* Bump FABs up when sticky bar is visible */
+body.sticky-active .wa-fab { bottom: 72px; }
+body.sticky-active .back-top { bottom: 72px; }
 
 /* ── WHY GRID ── */
 .why-grid {
@@ -959,6 +1001,29 @@ footer {
   .facility-card, .btn-primary, .wa-fab, .back-top { transition: none; }
   .sticky-bar { transition: none; }
 }
+
+/* ── CAMPUS PHOTO STRIP ── */
+.campus-strip { height: 320px; overflow: hidden; position: relative; }
+.campus-strip img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.campus-strip-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,23,42,0.5) 0%, transparent 60%); }
+.campus-strip-label { position: absolute; bottom: 24px; left: 40px; color: #fff; }
+.campus-strip-label-eyebrow { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; margin-bottom: 4px; }
+.campus-strip-label-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; }
+
+/* ── MAP SECTION ── */
+.map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.map-info { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+.map-info-row { display: flex; gap: 12px; align-items: flex-start; }
+.map-info-icon { font-size: 18px; flex-shrink: 0; }
+.map-info-label { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.map-info-value { font-size: 13px; color: var(--ink-light); line-height: 1.6; }
+.map-iframe-wrap { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+@media (max-width: 900px) { .map-grid { grid-template-columns: 1fr !important; gap: 32px !important; } }
 
 /* ── STICKY APPLY BAR ── */
 .sticky-bar {
@@ -1031,6 +1096,8 @@ footer {
   font-weight: 700;
   color: var(--gold-light);
 }
+.about-para { font-size: 15px; color: var(--ink-mid); line-height: 1.8; margin-bottom: 20px; }
+.about-para-last { margin-bottom: 28px; }
 .about-points { display: flex; flex-direction: column; gap: 20px; margin-top: 28px; }
 .about-point {
   display: flex;
@@ -1147,7 +1214,7 @@ footer {
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .about-img-wrap { height: 260px; }
   .results-grid { grid-template-columns: 1fr; gap: 12px; }
-  #map .section-inner > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+  
   .enquiry-grid { grid-template-columns: 1fr; gap: 32px; }
   .gallery-strip { grid-template-columns: repeat(2,1fr); height: auto; }
   .gallery-strip img { height: 160px; }
@@ -1158,6 +1225,8 @@ footer {
   .steps-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .trust-strip-inner { gap: 16px; }
+  .nav-logo-name { font-size: 9px; letter-spacing: 0.2px; }
+  .nav-logo-sub { display: none; }
   .result-toppers { gap: 16px; }
   .sticky-bar { padding: 10px 16px; flex-wrap: wrap; gap: 10px; }
   .sticky-bar-text { font-size: 12px; width: 100%; }
@@ -1210,8 +1279,7 @@ footer {
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">
-      <img src="images/logo.png" alt="SSMS" style="height:36px;filter:brightness(0) invert(1);">
-      <span class="nav-logo-sub">Est. 2012 · CBSE</span>
+      <img src="images/logo.png" alt="SSMS — Srimathi Sundaravalli Memorial School" style="height:40px;filter:brightness(0) invert(1);">
     </div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -1280,12 +1348,12 @@ footer {
 </section>
 
 <!-- CAMPUS PHOTO STRIP -->
-<div style="height:320px;overflow:hidden;position:relative;">
-  <img src="images/campus-hero.jpg" alt="SSMS Campus" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
-  <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(15,23,42,0.5) 0%, transparent 60%);"></div>
-  <div style="position:absolute;bottom:24px;left:40px;color:#fff;">
-    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:0.7;margin-bottom:4px;">Our Campus</div>
-    <div style="font-family:Cormorant Garamond,serif;font-size:22px;font-weight:600;">Mappedu Road, New Perungalathur, Chennai</div>
+<div class="campus-strip">
+  <img src="images/campus-hero.jpg" alt="SSMS Campus">
+  <div class="campus-strip-overlay"></div>
+  <div class="campus-strip-label">
+    <div class="campus-strip-label-eyebrow">Our Campus</div>
+    <div class="campus-strip-label-text">Mappedu Road, New Perungalathur, Chennai</div>
   </div>
 </div>
 
@@ -1343,36 +1411,36 @@ footer {
     <div class="section-label fade-up">Our Story</div>
     <h2 class="section-title fade-up fade-up-delay-1">A School Built on Trust,<br>Not on Fees</h2>
     <div class="about-grid">
-      <div class="about-img-wrap fade-up fade-up-delay-1">
+      <div class="about-img-wrap">
         <img loading="lazy" src="images/primary-v1.jpg" alt="SSMS Students">
         <div class="about-img-badge">
           <strong>Est. 2012</strong>
           Part of SSM Educational Trust since 1985
         </div>
       </div>
-      <div class="fade-up fade-up-delay-2">
-        <p style="font-size:15px;color:var(--ink-mid);line-height:1.8;margin-bottom:20px;">
+      <div class="about-text">
+        <p class="about-para">
           Srimathi Sundaravalli Memorial School was founded with one belief: every child deserves quality education without financial barriers. No capitation fee. No donation. Just merit.
         </p>
-        <p style="font-size:15px;color:var(--ink-mid);line-height:1.8;margin-bottom:28px;">
+        <p class="about-para about-para-last">
           Today, over 1,200 students from Montessori to Class 12 learn on our 28,894 sq.m campus in New Perungalathur — with 80+ qualified teachers, 15 facilities, and a parent community that keeps coming back.
         </p>
         <div class="about-points">
-          <div class="about-point">
+          <div class="about-point fade-up">
             <div class="about-point-icon">🏛️</div>
             <div class="about-point-text">
               <h4>CBSE Affiliated Since 2012</h4>
               <p>Affiliation No. 1930487 — nationally recognised curriculum, board exams, and results.</p>
             </div>
           </div>
-          <div class="about-point">
+          <div class="about-point fade-up">
             <div class="about-point-icon">🎓</div>
             <div class="about-point-text">
               <h4>Holistic Development</h4>
               <p>Academics, sports, fine arts, yoga, Scouts & Guides — we develop the whole child.</p>
             </div>
           </div>
-          <div class="about-point">
+          <div class="about-point fade-up">
             <div class="about-point-icon">🤝</div>
             <div class="about-point-text">
               <h4>Special Educator on Staff</h4>
@@ -1386,38 +1454,38 @@ footer {
 </section>
 
 <!-- WHY SSMS -->
-<section class="section" style="background:var(--cream);" id="why">
+<section class="section section-bg-cream" id="why">
   <div class="section-inner">
     <div class="section-label fade-up">Why Choose SSMS</div>
     <h2 class="section-title fade-up fade-up-delay-1">What Makes Us Different<br>from Other Schools</h2>
     <p class="section-sub fade-up fade-up-delay-2">Parents in Chennai have many options. Here's what sets SSMS apart — in plain language.</p>
-    <div class="why-grid fade-up fade-up-delay-2">
-      <div class="why-card">
+    <div class="why-grid">
+      <div class="why-card fade-up">
         <div class="why-card-icon">🚫</div>
         <h4>Zero Donation Fee</h4>
         <p>Many Chennai schools charge ₹50,000–₹2L as "donation". SSMS charges nothing beyond published fees. Ever.</p>
       </div>
-      <div class="why-card">
+      <div class="why-card fade-up">
         <div class="why-card-icon">📋</div>
         <h4>Transparent Admissions</h4>
         <p>Merit list published online. No agents, no back-door entries. Your child gets in on ability — nothing else.</p>
       </div>
-      <div class="why-card">
+      <div class="why-card fade-up">
         <div class="why-card-icon">👤</div>
         <h4>Every Child is Known</h4>
         <p>With 1,200 students and 80+ teachers, class sizes stay manageable. Teachers know your child by name, not roll number.</p>
       </div>
-      <div class="why-card">
+      <div class="why-card fade-up">
         <div class="why-card-icon">🏫</div>
         <h4>Real Campus, Real Facilities</h4>
         <p>28,894 sq.m campus with 15 facilities — not a rented building. Science labs, computer centre, library, sports ground, all on-site.</p>
       </div>
-      <div class="why-card">
+      <div class="why-card fade-up">
         <div class="why-card-icon">🎭</div>
         <h4>Beyond Academics</h4>
         <p>Fine arts, yoga, Scouts & Guides, sports, Annual Day. We develop the whole child — not just a board exam score.</p>
       </div>
-      <div class="why-card">
+      <div class="why-card fade-up">
         <div class="why-card-icon">🤝</div>
         <h4>Support for Every Child</h4>
         <p>Special educator and counsellor on staff. Children who need extra support get it — proactively, not as an afterthought.</p>
@@ -1429,9 +1497,9 @@ footer {
 <!-- TESTIMONIALS -->
 <section class="section testimonials-bg" id="testimonials">
   <div class="section-inner">
-    <div class="section-label">Parent Stories</div>
-    <h2 class="section-title">What Families Say About SSMS</h2>
-    <p class="section-sub">Real feedback from parents who chose us. We let their words speak for the school.</p>
+    <div class="section-label fade-up">Parent Stories</div>
+    <h2 class="section-title fade-up fade-up-delay-1">What Families Say About SSMS</h2>
+    <p class="section-sub fade-up fade-up-delay-2">Real feedback from parents who chose us. We let their words speak for the school.</p>
     <div class="testimonials-grid">
       <div class="testimonial-card">
         <div class="stars">★★★★★</div>
@@ -1472,9 +1540,9 @@ footer {
 <!-- FACILITIES -->
 <section class="section" id="facilities">
   <div class="section-inner">
-    <div class="section-label">Campus Life</div>
-    <h2 class="section-title">Built for Learning,<br>Designed for Growth</h2>
-    <p class="section-sub">28,894 sq.m campus with 15 purpose-built facilities. Everything your child needs, under one roof.</p>
+    <div class="section-label fade-up">Campus Life</div>
+    <h2 class="section-title fade-up fade-up-delay-1">Built for Learning,<br>Designed for Growth</h2>
+    <p class="section-sub fade-up fade-up-delay-2">28,894 sq.m campus with 15 purpose-built facilities. Everything your child needs, under one roof.</p>
     <div class="facilities-grid">
       <div class="facility-card">
         <div class="facility-img" style="padding:0;overflow:hidden;"><img loading="lazy" src="images/science-lab-1-1.jpg" alt="Science Lab" style="width:100%;height:100%;object-fit:cover;"></div>
@@ -1519,8 +1587,8 @@ footer {
         </div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:32px;">
-      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--green);text-decoration:none;border-bottom:2px solid var(--green);padding-bottom:2px;">
+    <div class="facilities-cta">
+      <a href="#contact" class="facilities-cta-link">
         Book a campus visit to see it in person →
       </a>
     </div>
@@ -1530,9 +1598,9 @@ footer {
 <!-- ADMISSION STEPS -->
 <section class="section admission-bg" id="admissions">
   <div class="section-inner">
-    <div class="section-label">Admissions 2026–27</div>
-    <h2 class="section-title">Simple. Transparent. Merit-Based.</h2>
-    <p class="section-sub">Four steps. No agents. No donations. Just your child's ability.</p>
+    <div class="section-label fade-up">Admissions 2026–27</div>
+    <h2 class="section-title fade-up fade-up-delay-1">Simple. Transparent. Merit-Based.</h2>
+    <p class="section-sub fade-up fade-up-delay-2">Four steps. No agents. No donations. Just your child's ability.</p>
     <div class="steps-grid">
       <div class="step">
         <div class="step-num">1</div>
@@ -1560,13 +1628,11 @@ footer {
       </div>
     </div>
     <div class="admission-cta">
-      <a href="#enquire" class="btn-primary" style="font-size:15px;padding:14px 28px;">Apply Online Now →</a>
-      <a href="https://school.ssms.edu.in/" target="_blank" class="btn-outline" style="font-size:14px;padding:14px 22px;">📥 Download Fee Chart</a>
-      <a href="https://school.ssms.edu.in/" target="_blank" class="btn-outline" style="font-size:14px;padding:14px 22px;">📋 Download Syllabus</a>
+      <a href="#enquire" class="btn-primary btn-lg">Apply Online Now →</a>
+      <a href="https://school.ssms.edu.in/" target="_blank" class="btn-outline btn-md">📥 Download Fee Chart</a>
+      <a href="https://school.ssms.edu.in/" target="_blank" class="btn-outline btn-md">📋 Download Syllabus</a>
     </div>
-    <div style="margin-top:20px;text-align:center;font-size:12px;color:rgba(255,255,255,0.35);">
-      Questions? Call 044-45094270 or WhatsApp us — we respond within 2 hours on school days.
-    </div>
+    <p class="admission-note">Questions? Call 044-45094270 or WhatsApp us — we respond within 2 hours on school days.</p>
   </div>
 </section>
 
@@ -1596,7 +1662,7 @@ footer {
     <div class="result-toppers fade-up fade-up-delay-2">
       <div>
         <div class="result-topper-label">Class 10 Toppers 2024</div>
-        <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <div class="topper-list">
           <div class="topper-item">
             <div class="topper-score">98.6%</div>
             <div><div class="topper-name">Aishwarya R.</div><div class="topper-class">Class 10</div></div>
@@ -1622,7 +1688,7 @@ footer {
     <h2 class="section-title fade-up fade-up-delay-1">Interested? Let's Talk.</h2>
     <p class="section-sub fade-up fade-up-delay-2">Fill this in and we'll call you back within one school day. No spam, no pressure.</p>
     <div class="enquiry-grid">
-      <div class="enquiry-form fade-up fade-up-delay-1">
+      <div class="enquiry-form">
         <div id="enquiryFormWrap">
           <div class="form-row">
             <div class="form-group">
@@ -1672,29 +1738,29 @@ footer {
           <a href="https://wa.me/914445094270" class="btn-primary" style="display:inline-block;margin-top:16px;" target="_blank">Open WhatsApp →</a>
         </div>
       </div>
-      <div class="enquiry-points fade-up fade-up-delay-2">
-        <div class="enquiry-point">
+      <div class="enquiry-points">
+        <div class="enquiry-point fade-up">
           <div class="enquiry-point-icon">📞</div>
           <div class="enquiry-point-text">
             <h4>We Call You Back</h4>
             <p>Submit the form and our admissions team will call within one school day — no chasing required.</p>
           </div>
         </div>
-        <div class="enquiry-point">
+        <div class="enquiry-point fade-up">
           <div class="enquiry-point-icon">🏫</div>
           <div class="enquiry-point-text">
             <h4>Book a Campus Visit</h4>
             <p>See the school before you decide. We welcome parents to walk through the campus, meet teachers, and ask questions.</p>
           </div>
         </div>
-        <div class="enquiry-point">
+        <div class="enquiry-point fade-up">
           <div class="enquiry-point-icon">📋</div>
           <div class="enquiry-point-text">
             <h4>Get the Fee Chart</h4>
             <p>We'll send you the complete fee structure — no hidden charges, no surprises. Everything in writing.</p>
           </div>
         </div>
-        <div class="enquiry-point">
+        <div class="enquiry-point fade-up">
           <div class="enquiry-point-icon">⚡</div>
           <div class="enquiry-point-text">
             <h4>Seats Fill Fast</h4>
@@ -1712,43 +1778,43 @@ footer {
     <div class="section-label fade-up">Common Questions</div>
     <h2 class="section-title fade-up fade-up-delay-1">Everything Parents Ask<br>Before Applying</h2>
     <p class="section-sub fade-up fade-up-delay-2">Straight answers. No runaround.</p>
-    <div class="faq-list fade-up fade-up-delay-2">
-      <div class="faq-item">
+    <div class="faq-list">
+      <div class="faq-item fade-up">
         <button class="faq-q" onclick="toggleFaq(this)">
           Is there any donation or capitation fee?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">No — never. SSMS has a strict no-donation, no-capitation policy. Admissions are purely merit-based. The only fees are the standard tuition and transport fees published in our fee chart.</div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item fade-up">
         <button class="faq-q" onclick="toggleFaq(this)">
           What is the age criteria for admission?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">For Montessori (LKG): child must be 3 years old by June 1st of the admission year. For Class 1: 5 years old by June 1st. For other classes, age criteria follows CBSE norms. Contact us for specific class requirements.</div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item fade-up">
         <button class="faq-q" onclick="toggleFaq(this)">
           What areas does the school transport cover?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">Our GPS-tracked buses cover multiple routes across Chennai including Pallavaram, Chromepet, Tambaram, Vandalur, Guduvanchery, and surrounding areas. Call us at 044-45094270 to check if your area is covered.</div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item fade-up">
         <button class="faq-q" onclick="toggleFaq(this)">
           When do admissions open and close?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">Admissions for 2026–27 are currently open. Seats are limited and filled on a merit basis — we recommend applying early. The online application takes under 10 minutes. Once seats are filled, the portal closes.</div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item fade-up">
         <button class="faq-q" onclick="toggleFaq(this)">
           Is there a parent portal? How does communication work?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">Yes — SSMS has a dedicated parent portal for attendance, circulars, exam schedules, and fee payments. We also communicate via WhatsApp for urgent updates. Parents are never left in the dark.</div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item fade-up">
         <button class="faq-q" onclick="toggleFaq(this)">
           Does the school have a special educator or counsellor?
           <span class="faq-icon">+</span>
@@ -1756,9 +1822,9 @@ footer {
         <div class="faq-a">Yes. We have a trained special educator and a school counsellor on staff. Children who need additional academic support or emotional guidance are identified early and supported proactively — not left behind.</div>
       </div>
     </div>
-    <div style="margin-top:28px;text-align:center;font-size:14px;color:var(--ink-light);">
+    <div class="faq-footer">
       Have a question not listed here?
-      <a href="https://wa.me/914445094270" style="color:var(--green);font-weight:600;text-decoration:none;margin-left:4px;">Ask us on WhatsApp →</a>
+      <a href="https://wa.me/914445094270" class="faq-footer-link">Ask us on WhatsApp →</a>
     </div>
   </div>
 </section>
@@ -1781,50 +1847,48 @@ footer {
 </section>
 
 <!-- MAP + CONTACT -->
-<section class="section" style="background:var(--cream-dark);padding:64px 32px;" id="map">
+<section class="section section-bg-cream-dark" id="map">
   <div class="section-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+    <div class="map-grid">
       <div>
-        <div class="section-label">Find Us</div>
-        <h2 class="section-title" style="margin-bottom:20px;">Visit the Campus</h2>
-        <p style="font-size:14px;color:var(--ink-mid);line-height:1.8;margin-bottom:24px;">
+        <div class="section-label fade-up">Find Us</div>
+        <h2 class="section-title fade-up fade-up-delay-1 map-title">Visit the Campus</h2>
+        <p class="section-sub fade-up fade-up-delay-2 map-desc">
           We welcome parents to visit the campus before applying. See the classrooms, meet the teachers, and get a feel for the school your child will grow up in.
         </p>
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="font-size:18px;flex-shrink:0;">📍</span>
+        <div class="map-info fade-up fade-up-delay-2">
+          <div class="map-info-row">
+            <span class="map-info-icon">📍</span>
             <div>
-              <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px;">Address</div>
-              <div style="font-size:13px;color:var(--ink-light);line-height:1.6;">Mappedu Road, Alapakkam,<br>New Perungalathur, Chennai – 600 063</div>
+              <div class="map-info-label">Address</div>
+              <div class="map-info-value">Mappedu Road, Alapakkam,<br>New Perungalathur, Chennai – 600 063</div>
             </div>
           </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="font-size:18px;flex-shrink:0;">📞</span>
+          <div class="map-info-row">
+            <span class="map-info-icon">📞</span>
             <div>
-              <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px;">Phone</div>
-              <div style="font-size:13px;color:var(--ink-light);">044-45094270 &nbsp;|&nbsp; 044-45094235</div>
+              <div class="map-info-label">Phone</div>
+              <div class="map-info-value">044-45094270 &nbsp;|&nbsp; 044-45094235</div>
             </div>
           </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="font-size:18px;flex-shrink:0;">✉️</span>
+          <div class="map-info-row">
+            <span class="map-info-icon">✉️</span>
             <div>
-              <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px;">Email</div>
-              <div style="font-size:13px;color:var(--ink-light);">adminssms.perungalathur@ssmetrust.in</div>
+              <div class="map-info-label">Email</div>
+              <div class="map-info-value">adminssms.perungalathur@ssmetrust.in</div>
             </div>
           </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="font-size:18px;flex-shrink:0;">🕐</span>
+          <div class="map-info-row">
+            <span class="map-info-icon">🕐</span>
             <div>
-              <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px;">Office Hours</div>
-              <div style="font-size:13px;color:var(--ink-light);">Mon–Fri: 8:30 AM – 4:30 PM<br>Sat: 9:00 AM – 1:00 PM</div>
+              <div class="map-info-label">Office Hours</div>
+              <div class="map-info-value">Mon–Fri: 8:30 AM – 4:30 PM<br>Sat: 9:00 AM – 1:00 PM</div>
             </div>
           </div>
         </div>
-        <div style="margin-top:24px;">
-          <a href="https://wa.me/914445094270?text=Hi%2C%20I%20would%20like%20to%20book%20a%20campus%20visit" target="_blank" class="btn-primary" style="display:inline-block;">Book a Campus Visit →</a>
-        </div>
+        <a href="https://wa.me/914445094270?text=Hi%2C%20I%20would%20like%20to%20book%20a%20campus%20visit" target="_blank" class="btn-primary fade-up fade-up-delay-3" style="display:inline-block;">Book a Campus Visit →</a>
       </div>
-      <div style="border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+      <div class="map-iframe-wrap fade-up fade-up-delay-2">
         <iframe
           src="https://maps.google.com/maps?q=Srimathi+Sundaravalli+Memorial+School+New+Perungalathur+Chennai&output=embed&hl=en"
           width="100%"
@@ -1845,7 +1909,7 @@ footer {
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand-name"><img src="images/logo.png" alt="SSMS" style="height:28px;filter:brightness(0) invert(1);opacity:0.8;margin-bottom:8px;display:block;"><span style="font-family:Cormorant Garamond,serif;font-size:16px;color:#fff;">Srimathi Sundaravalli Memorial School</span></div>
+        <div class="footer-brand-name"><img src="images/logo.png" alt="SSMS — Srimathi Sundaravalli Memorial School" style="height:32px;filter:brightness(0) invert(1);opacity:0.8;margin-bottom:8px;display:block;"></div>
         <p class="footer-brand-desc">A CBSE-affiliated school committed to merit, character, and holistic development. Part of the SSM Educational Trust, serving Chennai since 1985.</p>
         <div class="footer-contact-item">📍 Mappedu Road, Alapakkam, New Perungalathur, Chennai – 600 063</div>
         <div class="footer-contact-item">📞 044-45094270, 45094235</div>
@@ -1895,11 +1959,11 @@ footer {
     <strong>Admissions 2026–27 are open.</strong> Limited seats — merit-based, no donation fee.
   </div>
   <div class="sticky-bar-actions">
-    <a href="https://wa.me/914445094270" class="btn-green" style="font-size:13px;padding:9px 16px;" target="_blank">
+    <a href="https://wa.me/914445094270" class="btn-green btn-sm" target="_blank">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       WhatsApp
     </a>
-    <a href="#enquire" class="btn-primary" style="font-size:13px;padding:9px 16px;">Apply Now →</a>
+    <a href="#enquire" class="btn-primary btn-sm">Apply Now →</a>
     <button class="sticky-bar-dismiss" id="stickyDismiss" aria-label="Dismiss">✕</button>
   </div>
 </div>
@@ -1964,6 +2028,9 @@ const statsStrip = document.querySelector('.stats-strip');
 const resultsSection = document.querySelector('#results');
 if (statsStrip) statsObserver.observe(statsStrip);
 if (resultsSection) statsObserver.observe(resultsSection);
+
+// FAQ accordion
+function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
@@ -1978,7 +2045,7 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(el.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.08, rootMargin: '0px 0px 60px 0px' });
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
@@ -1990,6 +2057,29 @@ document.querySelectorAll('.stat-item, .testimonial-card, .facility-card, .step,
   if (i % 4 === 3) el.classList.add('fade-up-delay-3');
   observer.observe(el);
 });
+
+// Immediately reveal any .fade-up elements already in viewport (handles anchor nav jumps)
+function revealInViewport() {
+  document.querySelectorAll('.fade-up:not(.visible)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 60 && rect.bottom > 0) {
+      el.classList.add('visible');
+    }
+  });
+}
+
+// Run after dynamic classes are applied
+setTimeout(revealInViewport, 50);
+
+// Run on hash change (anchor nav)
+window.addEventListener('hashchange', () => setTimeout(revealInViewport, 80));
+
+// Run on scroll as fallback (throttled)
+let _rvTimer;
+window.addEventListener('scroll', () => {
+  clearTimeout(_rvTimer);
+  _rvTimer = setTimeout(revealInViewport, 80);
+}, { passive: true });
 
 // Enquiry form
 function submitEnquiry() {
@@ -2013,14 +2103,17 @@ window.addEventListener('scroll', () => {
   const heroBottom = document.querySelector('.hero').getBoundingClientRect().bottom;
   if (heroBottom < 0) {
     stickyBar.classList.add('visible');
+    document.body.classList.add('sticky-active');
   } else {
     stickyBar.classList.remove('visible');
+    document.body.classList.remove('sticky-active');
   }
 }, { passive: true });
 
 stickyDismiss.addEventListener('click', () => {
   stickyDismissed = true;
   stickyBar.classList.remove('visible');
+  document.body.classList.remove('sticky-active');
 });
 
 // Scroll spy
@@ -2036,6 +2129,8 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(a => {
     a.classList.toggle('active', a.getAttribute('href') === current);
   });
+}, { passive: true });
+
 // Back to top
 const backTop = document.getElementById('backTop');
 backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
