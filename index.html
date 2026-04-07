@@ -966,6 +966,21 @@ footer {
   .sticky-bar { transition: none; }
 }
 
+/* ── MAP SECTION ── */
+.map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.map-info { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+.map-info-row { display: flex; gap: 12px; align-items: flex-start; }
+.map-info-icon { font-size: 18px; flex-shrink: 0; }
+.map-info-label { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.map-info-value { font-size: 13px; color: var(--ink-light); line-height: 1.6; }
+.map-iframe-wrap { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+@media (max-width: 900px) { .map-grid { grid-template-columns: 1fr !important; gap: 32px !important; } }
+
 /* ── STICKY APPLY BAR ── */
 .sticky-bar {
   position: fixed;
@@ -1153,7 +1168,7 @@ footer {
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .about-img-wrap { height: 260px; }
   .results-grid { grid-template-columns: 1fr; gap: 12px; }
-  #map .section-inner > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+  
   .enquiry-grid { grid-template-columns: 1fr; gap: 32px; }
   .gallery-strip { grid-template-columns: repeat(2,1fr); height: auto; }
   .gallery-strip img { height: 160px; }
@@ -1794,48 +1809,46 @@ footer {
 <!-- MAP + CONTACT -->
 <section class="section" style="background:var(--cream-dark);padding:64px 32px;" id="map">
   <div class="section-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+    <div class="map-grid">
       <div>
-        <div class="section-label">Find Us</div>
-        <h2 class="section-title" style="margin-bottom:20px;">Visit the Campus</h2>
-        <p style="font-size:14px;color:var(--ink-mid);line-height:1.8;margin-bottom:24px;">
+        <div class="section-label fade-up">Find Us</div>
+        <h2 class="section-title fade-up fade-up-delay-1" style="margin-bottom:20px;">Visit the Campus</h2>
+        <p class="section-sub fade-up fade-up-delay-2" style="margin-bottom:24px;">
           We welcome parents to visit the campus before applying. See the classrooms, meet the teachers, and get a feel for the school your child will grow up in.
         </p>
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="font-size:18px;flex-shrink:0;">📍</span>
+        <div class="map-info fade-up fade-up-delay-2">
+          <div class="map-info-row">
+            <span class="map-info-icon">📍</span>
             <div>
-              <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px;">Address</div>
-              <div style="font-size:13px;color:var(--ink-light);line-height:1.6;">Mappedu Road, Alapakkam,<br>New Perungalathur, Chennai – 600 063</div>
+              <div class="map-info-label">Address</div>
+              <div class="map-info-value">Mappedu Road, Alapakkam,<br>New Perungalathur, Chennai – 600 063</div>
             </div>
           </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="font-size:18px;flex-shrink:0;">📞</span>
+          <div class="map-info-row">
+            <span class="map-info-icon">📞</span>
             <div>
-              <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px;">Phone</div>
-              <div style="font-size:13px;color:var(--ink-light);">044-45094270 &nbsp;|&nbsp; 044-45094235</div>
+              <div class="map-info-label">Phone</div>
+              <div class="map-info-value">044-45094270 &nbsp;|&nbsp; 044-45094235</div>
             </div>
           </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="font-size:18px;flex-shrink:0;">✉️</span>
+          <div class="map-info-row">
+            <span class="map-info-icon">✉️</span>
             <div>
-              <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px;">Email</div>
-              <div style="font-size:13px;color:var(--ink-light);">adminssms.perungalathur@ssmetrust.in</div>
+              <div class="map-info-label">Email</div>
+              <div class="map-info-value">adminssms.perungalathur@ssmetrust.in</div>
             </div>
           </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;">
-            <span style="font-size:18px;flex-shrink:0;">🕐</span>
+          <div class="map-info-row">
+            <span class="map-info-icon">🕐</span>
             <div>
-              <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px;">Office Hours</div>
-              <div style="font-size:13px;color:var(--ink-light);">Mon–Fri: 8:30 AM – 4:30 PM<br>Sat: 9:00 AM – 1:00 PM</div>
+              <div class="map-info-label">Office Hours</div>
+              <div class="map-info-value">Mon–Fri: 8:30 AM – 4:30 PM<br>Sat: 9:00 AM – 1:00 PM</div>
             </div>
           </div>
         </div>
-        <div style="margin-top:24px;">
-          <a href="https://wa.me/914445094270?text=Hi%2C%20I%20would%20like%20to%20book%20a%20campus%20visit" target="_blank" class="btn-primary" style="display:inline-block;">Book a Campus Visit →</a>
-        </div>
+        <a href="https://wa.me/914445094270?text=Hi%2C%20I%20would%20like%20to%20book%20a%20campus%20visit" target="_blank" class="btn-primary fade-up fade-up-delay-3" style="display:inline-block;">Book a Campus Visit →</a>
       </div>
-      <div style="border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+      <div class="map-iframe-wrap fade-up fade-up-delay-2">
         <iframe
           src="https://maps.google.com/maps?q=Srimathi+Sundaravalli+Memorial+School+New+Perungalathur+Chennai&output=embed&hl=en"
           width="100%"
