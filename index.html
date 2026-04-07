@@ -1275,11 +1275,7 @@ footer {
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">
-      <img src="images/logo.png" alt="SSMS" style="height:36px;filter:brightness(0) invert(1);">
-      <div class="nav-logo-text">
-        <span class="nav-logo-name">SRIMATHI SUNDARAVALLI MEMORIAL SCHOOL</span>
-        <span class="nav-logo-sub">Marching Towards Excellence...</span>
-      </div>
+      <img src="images/logo.png" alt="SSMS — Srimathi Sundaravalli Memorial School" style="height:40px;filter:brightness(0) invert(1);">
     </div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -2028,6 +2024,9 @@ const statsStrip = document.querySelector('.stats-strip');
 const resultsSection = document.querySelector('#results');
 if (statsStrip) statsObserver.observe(statsStrip);
 if (resultsSection) statsObserver.observe(resultsSection);
+
+// FAQ accordion
+function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
