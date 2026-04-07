@@ -2129,6 +2129,74 @@ backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smo
 window.addEventListener('scroll', () => {
   backTop.classList.toggle('visible', window.scrollY > 600);
 }, { passive: true });
+
+// DEBUG OVERLAY — press D to toggle, remove before deploy
+(function() {
+  let debugOn = false;
+  const colors = ['#e74c3c','#3498db','#2ecc71','#f39c12','#9b59b6','#1abc9c','#e67e22','#e91e63'];
+  let colorIdx = 0;
+  const style = document.createElement('style');
+  style.id = 'debug-style';
+  style.textContent = `
+    .debug-label {
+      position: absolute; top: 0; left: 0; z-index: 9999;
+      font: bold 10px/1 monospace; color: #fff; padding: 2px 6px;
+      pointer-events: none; white-space: nowrap;
+    }
+    .debug-on [id], .debug-on .section-inner > *, .debug-on .fade-up {
+      position: relative;
+    }
+  `;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'd' && e.key !== 'D') return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+
+    debugOn = !debugOn;
+    document.body.classList.toggle('debug-on', debugOn);
+
+    // Remove existing labels
+    document.querySelectorAll('.debug-label, .debug-outline').forEach(el => el.remove());
+    if (document.getElementById('debug-style')) document.getElementById('debug-style').remove();
+
+    if (!debugOn) return;
+
+    document.head.appendChild(style);
+    colorIdx = 0;
+
+    // Label all elements with id
+    document.querySelectorAll('[id]').forEach(el => {
+      const c = colors[colorIdx++ % colors.length];
+      el.style.outline = '2px solid ' + c;
+      el.classList.add('debug-outline');
+      const lbl = document.createElement('div');
+      lbl.className = 'debug-label';
+      lbl.style.background = c;
+      lbl.textContent = '#' + el.id;
+      el.style.position = 'relative';
+      el.appendChild(lbl);
+    });
+
+    // Label all elements with class containing section/grid/strip/card/form
+    document.querySelectorAll('[class*="section"],[class*="grid"],[class*="strip"],[class*="card"],[class*="form"],[class*="fade-up"]').forEach(el => {
+      if (el.querySelector('.debug-label')) return; // skip if already labeled
+      const c = colors[colorIdx++ % colors.length];
+      el.style.outline = '1px dashed ' + c;
+      el.classList.add('debug-outline');
+      const cls = el.className.split(' ').filter(c => !c.startsWith('debug')).join('.');
+      if (!cls) return;
+      const lbl = document.createElement('div');
+      lbl.className = 'debug-label';
+      lbl.style.background = c;
+      lbl.style.opacity = '0.85';
+      lbl.textContent = '.' + cls.substring(0, 40);
+      el.style.position = 'relative';
+      el.appendChild(lbl);
+    });
+
+    console.log('[DEBUG] Overlay ' + (debugOn ? 'ON' : 'OFF') + ' — press D to toggle');
+  });
+})();
 </script>
 
 </body>
