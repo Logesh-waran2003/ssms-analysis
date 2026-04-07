@@ -435,6 +435,20 @@ section[id] { scroll-margin-top: 64px; }
 .facility-body { padding: 16px; }
 .facility-name { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
 .facility-desc { font-size: 12.5px; color: var(--ink-light); line-height: 1.5; }
+.facilities-cta { text-align: center; margin-top: 32px; }
+.facilities-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green);
+  text-decoration: none;
+  border-bottom: 2px solid var(--green);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+.facilities-cta-link:hover { opacity: 0.75; }
 
 /* ── ADMISSION STEPS ── */
 .admission-bg { background: var(--green); }
@@ -1553,8 +1567,8 @@ footer {
         </div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:32px;">
-      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--green);text-decoration:none;border-bottom:2px solid var(--green);padding-bottom:2px;">
+    <div class="facilities-cta">
+      <a href="#contact" class="facilities-cta-link">
         Book a campus visit to see it in person →
       </a>
     </div>
