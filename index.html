@@ -2123,6 +2123,8 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(a => {
     a.classList.toggle('active', a.getAttribute('href') === current);
   });
+}, { passive: true });
+
 // Back to top
 const backTop = document.getElementById('backTop');
 backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
