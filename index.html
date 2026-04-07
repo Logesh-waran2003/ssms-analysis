@@ -728,6 +728,7 @@ footer {
   flex-wrap: wrap;
   align-items: center;
 }
+.topper-list { display: flex; gap: 24px; flex-wrap: wrap; }
 .result-topper-label {
   font-size: 11px;
   font-weight: 600;
@@ -801,6 +802,8 @@ footer {
   padding: 0 20px;
 }
 .faq-item.open .faq-a { max-height: 200px; padding: 0 20px 18px; }
+.faq-footer { margin-top: 28px; text-align: center; font-size: 14px; color: var(--ink-light); }
+.faq-footer-link { color: var(--green); font-weight: 600; text-decoration: none; margin-left: 4px; }
 
 /* ── GALLERY STRIP ── */
 .gallery-strip {
@@ -1650,7 +1653,7 @@ footer {
     <div class="result-toppers fade-up fade-up-delay-2">
       <div>
         <div class="result-topper-label">Class 10 Toppers 2024</div>
-        <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <div class="topper-list">
           <div class="topper-item">
             <div class="topper-score">98.6%</div>
             <div><div class="topper-name">Aishwarya R.</div><div class="topper-class">Class 10</div></div>
@@ -1810,9 +1813,9 @@ footer {
         <div class="faq-a">Yes. We have a trained special educator and a school counsellor on staff. Children who need additional academic support or emotional guidance are identified early and supported proactively — not left behind.</div>
       </div>
     </div>
-    <div style="margin-top:28px;text-align:center;font-size:14px;color:var(--ink-light);">
+    <div class="faq-footer">
       Have a question not listed here?
-      <a href="https://wa.me/914445094270" style="color:var(--green);font-weight:600;text-decoration:none;margin-left:4px;">Ask us on WhatsApp →</a>
+      <a href="https://wa.me/914445094270" class="faq-footer-link">Ask us on WhatsApp →</a>
     </div>
   </div>
 </section>
